@@ -31,7 +31,6 @@ function Start({ setName }) {
 
             <S.StartBox>
                 <S.Input
-                    autoFocus
                     onChange={handleChange}
                     type="text"
                     value={input}
