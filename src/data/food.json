@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "name": "수제 가라아게",
+        "image": "food_karaake"
+    },
+    {
+        "id": 2,
+        "name": "모찌리도후",
+        "image": "food_mochi"
+    },
+    {
+        "id": 3,
+        "name": "오코노미야끼",
+        "image": "food_okkonomi"
+    },
+    {
+        "id": 4,
+        "name": "요코하마 나폴리탄",
+        "image": "food_napolitan"
+    },
+    {
+        "id": 5,
+        "name": "오징어다리튀김",
+        "image": "food_squid"
+    },
+    {
+        "id": 6,
+        "name": "오뎅 모리아와세",
+        "image": "food_oden"
+    },
+    {
+        "id": 7,
+        "name": "타코와사비",
+        "image": "food_tako"
+    },
+    {
+        "id": 8,
+        "name": "굴튀김",
+        "image": "food_oyster"
+    },
+    {
+        "id": 9,
+        "name": "안키모(아귀간)",
+        "image": "food_ankimo"
+    },
+    {
+        "id": 10,
+        "name": "닭껍질교자",
+        "image": "food_torimandoo"
+    },
+    {
+        "id": 11,
+        "name": "가라아케 카레",
+        "image": "food_kare"
+    },
+    {
+        "id": 12,
+        "name": "고치베이컨포테토",
+        "image": "food_gochi"
+    },
+    {
+        "id": 13,
+        "name": "닭껍질꼬지(토리카와)",
+        "image": "food_toriskin"
+    },
+    {
+        "id": 14,
+        "name": "고구마치즈고로케",
+        "image": "food_goroke"
+    },
+    {
+        "id": 15,
+        "name": "도-쿠야끼",
+        "image": "food_dog"
+    },
+    {
+        "id": 16,
+        "name": "가츠동",
+        "image": "food_kachudong"
+    }
+]
