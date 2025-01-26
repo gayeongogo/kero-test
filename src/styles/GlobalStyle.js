@@ -54,6 +54,14 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-style: normal;
   }
+
+  @font-face {
+        font-family: "SOYOMapleBoldTTF";
+        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2")
+            format("woff2");
+        font-weight: 400;
+        font-style: normal;
+    }
   
   body {
     background-color: #f5f5f5;
