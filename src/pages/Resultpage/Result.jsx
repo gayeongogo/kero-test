@@ -43,10 +43,18 @@ function Result({ name, mbti, setName, setMbti }) {
             if (resultElement) {
                 toPng(resultElement) // html-to-image로 DOM을 PNG로 변환
                     .then((dataUrl) => {
-                        saveAs(dataUrl, `${name}_kero.png`); // 파일 저장
+                        const link = document.createElement("a");
+                        link.href = dataUrl;
+                        link.download = `${name}_kero.png`;
+                        link.click();
+
+                        alert(
+                            "이미지가 저장되었습니다. 갤러리에서 확인하세요!"
+                        );
                     })
                     .catch((err) => {
-                        console.error("이미지 저장 실패:", err);
+                        console.error("이미지 공유 실패:", err);
+                        alert("이미지 저장에 실패했습니다. 다시 시도하세요");
                     });
             }
         }, 100);
@@ -84,6 +92,7 @@ function Result({ name, mbti, setName, setMbti }) {
                 })
                 .catch((err) => {
                     console.error("이미지 공유 실패:", err);
+                    alert("이미지 공유에 실패했습니다. 다시 시도하세요");
                 });
         }
     };
