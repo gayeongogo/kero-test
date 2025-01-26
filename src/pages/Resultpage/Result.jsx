@@ -35,23 +35,6 @@ function Result({ name, mbti, setName, setMbti }) {
 
     const basePath = "/assets/images";
 
-    const handleSaveImage = () => {
-        setCapturing(true);
-        const resultElement = document.getElementById("capture-area"); // 캡처 대상 ID
-
-        setTimeout(() => {
-            if (resultElement) {
-                toPng(resultElement) // html-to-image로 DOM을 PNG로 변환
-                    .then((dataUrl) => {
-                        saveAs(dataUrl, `${name}_kero.png`); // 파일 저장
-                    })
-                    .catch((err) => {
-                        console.error("이미지 저장 실패:", err);
-                    });
-            }
-        }, 100);
-    };
-
     const handleShareImage = () => {
         const resultElement = document.getElementById("capture-area"); // 캡처 대상
         if (resultElement) {
@@ -139,7 +122,6 @@ function Result({ name, mbti, setName, setMbti }) {
                 </R.Section>
                 <R.ButtonGroup>
                     <button onClick={handleRestart}>다시하기</button>
-                    <button onClick={handleSaveImage}>저장하기</button>
                     <button onClick={handleShareImage}>공유하기</button>
                 </R.ButtonGroup>
             </R.Main>
