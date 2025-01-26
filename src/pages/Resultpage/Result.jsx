@@ -4,12 +4,12 @@ import results from "../../data/results.json";
 import foodData from "../../data/food.json";
 import * as R from "./Result.styled";
 import { toPng } from "html-to-image";
-import { saveAs } from "file-saver";
 import logo from "../../assets/images/kero_logo_green.png";
 
 function Result({ name, mbti, setName, setMbti }) {
-    // 캡처 상태 관리
-    const [capturing, setCapturing] = useState(false);
+    const [capturing, setCapturing] = useState(false); // 캡처 상태 관리
+    const [isLoading, setIsLoading] = useState(false); // 로딩 상태 관리
+
     // 결과 매칭
     const resultData = results.find((result) => result.mbti === mbti);
 
@@ -36,39 +36,53 @@ function Result({ name, mbti, setName, setMbti }) {
     const basePath = "/assets/images";
 
     const handleShareImage = () => {
+        setCapturing(true);
         const resultElement = document.getElementById("capture-area"); // 캡처 대상
-        if (resultElement) {
-            toPng(resultElement)
-                .then((dataUrl) => {
-                    // Blob으로 변환
-                    fetch(dataUrl)
-                        .then((res) => res.blob())
-                        .then((blob) => {
-                            const file = new File([blob], `${name}_kero.png`, {
-                                type: "image/png",
-                            });
 
-                            // Web Share API로 공유
-                            if (
-                                navigator.canShare &&
-                                navigator.canShare({ files: [file] })
-                            ) {
-                                navigator.share({
-                                    files: [file],
-                                    title: "내 개구리 결과",
-                                    text: `${name}의 개구리 결과를 확인해보세요!`,
-                                });
-                            } else {
-                                alert(
-                                    "이 브라우저는 공유 기능을 지원하지 않습니다."
+        if (resultElement) {
+            setIsLoading(true);
+            requestAnimationFrame(() => {
+                toPng(resultElement)
+                    .then((dataUrl) => {
+                        // Blob으로 변환
+                        fetch(dataUrl)
+                            .then((res) => res.blob())
+                            .then((blob) => {
+                                const file = new File(
+                                    [blob],
+                                    `${name}_kero.png`,
+                                    {
+                                        type: "image/png",
+                                    }
                                 );
-                            }
-                        });
-                })
-                .catch((err) => {
-                    console.error("이미지 공유 실패:", err);
-                    alert("이미지 공유에 실패했습니다. 다시 시도하세요");
-                });
+
+                                // Web Share API로 공유
+                                if (
+                                    navigator.canShare &&
+                                    navigator.canShare({ files: [file] })
+                                ) {
+                                    navigator.share({
+                                        files: [file],
+                                        title: "내 개구리 결과",
+                                        text: `${name}의 개구리 결과를 확인해보세요!`,
+                                    });
+                                } else {
+                                    alert(
+                                        "이 브라우저는 공유 기능을 지원하지 않습니다."
+                                    );
+                                }
+                            })
+                            .finally(() => {
+                                // 작업 완료 후 로딩 상태 비활성화
+                                setIsLoading(false);
+                            });
+                    })
+                    .catch((err) => {
+                        console.error("이미지 공유 실패:", err);
+                        alert("이미지 공유에 실패했습니다. 다시 시도하세요");
+                        setIsLoading(false); // 실패 시에도 로딩 비활성화
+                    });
+            });
         }
     };
 
@@ -123,7 +137,9 @@ function Result({ name, mbti, setName, setMbti }) {
                 </R.Section>
                 <R.ButtonGroup>
                     <button onClick={handleRestart}>다시하기</button>
-                    <button onClick={handleShareImage}>공유하기</button>
+                    <button onClick={handleShareImage}>
+                        {isLoading ? <R.Loader /> : "공유하기"}
+                    </button>
                 </R.ButtonGroup>
             </R.Main>
         </R.Container>

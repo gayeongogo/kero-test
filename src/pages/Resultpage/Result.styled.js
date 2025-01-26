@@ -128,11 +128,12 @@ export const Food = styled.div`
 export const ButtonGroup = styled.div`
     margin-top: 30px;
     button {
+        width: 6rem;
+        height: 3rem;
         background-color: #4caf50;
         color: white;
         border: none;
         border-radius: 5px;
-        padding: 10px 15px;
         margin: 0 7px;
         font-size: 1rem;
         cursor: pointer;
@@ -142,4 +143,14 @@ export const ButtonGroup = styled.div`
             background-color: #45a049;
         }
     }
+`;
+export const Loader = styled.div`
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
 `;
