@@ -3,24 +3,25 @@ import styled from "styled-components";
 export const Container = styled.div`
     background-color: #fffbe6;
     text-align: center;
-    @font-face {
-        font-family: "SOYOMapleBoldTTF";
-        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2")
-            format("woff2");
-        font-weight: 400;
-        font-style: normal;
-    }
-
-    font-family: "SOYOMapleBoldTTF";
 `;
+
 export const Main = styled.main`
     padding: 2rem 20px 3rem;
+`;
+
+export const Logo = styled.div`
+    display: inline-block;
+    margin: 0 auto 10px;
+    img {
+        width: 3rem;
+    }
 `;
 
 export const Title = styled.h1`
     font-size: 1.4rem;
     color: #333;
     margin-bottom: 7px;
+    font-family: "SOYOMapleBoldTTF";
 `;
 
 export const Name = styled.h2`
@@ -28,6 +29,7 @@ export const Name = styled.h2`
     position: relative;
     display: inline-block;
     z-index: 2;
+    font-family: "SOYOMapleBoldTTF";
     &::before {
         position: absolute;
         bottom: -5px;
@@ -42,15 +44,8 @@ export const Name = styled.h2`
     }
 `;
 
-export const ResultCard = styled.div`
-    border-radius: 10px;
-    margin: 0 auto;
-    width: 90%;
-    font-family: "Pretendard-regular";
-`;
-
 export const Section = styled.div`
-    margin: 20px 0;
+    margin: 0 0 20px;
     padding: 2rem 0;
     border-top: 1px solid #ddd;
 
@@ -60,6 +55,11 @@ export const Section = styled.div`
         margin-bottom: 1rem;
     }
 `;
+export const Capture = styled.div`
+    background: #fffbe6;
+    padding: 20px;
+`;
+
 export const FrogImage = styled.div`
     width: 15rem;
     height: 15rem;
@@ -102,10 +102,10 @@ export const Match = styled.div`
 `;
 export const Food = styled.div`
     margin: 0 auto;
-    display: flex; /* Flexbox로 레이아웃 설정 */
-    flex-direction: column; /* 세로 방향으로 정렬 */
-    align-items: center; /* 가로 가운데 정렬 */
-    justify-content: center; /* 세로 가운데 정렬 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     img {
         margin-bottom: 1rem;
         width: 11rem;
@@ -127,14 +127,13 @@ export const Food = styled.div`
 
 export const ButtonGroup = styled.div`
     margin-top: 30px;
-
     button {
         background-color: #4caf50;
         color: white;
         border: none;
         border-radius: 5px;
         padding: 10px 15px;
-        margin: 0 10px;
+        margin: 0 7px;
         font-size: 1rem;
         cursor: pointer;
         transition: all 0.3s ease;
