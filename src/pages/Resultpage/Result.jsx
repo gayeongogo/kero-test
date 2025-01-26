@@ -67,6 +67,7 @@ function Result({ name, mbti, setName, setMbti }) {
                 })
                 .catch((err) => {
                     console.error("이미지 공유 실패:", err);
+                    alert("이미지 공유에 실패했습니다. 다시 시도하세요");
                 });
         }
     };
